@@ -3,8 +3,7 @@ const path = require("path");
 
 const config = {
   entry: {
-    S3Upload: "./uploadImage.js",
-    ImageDock: "./ImageDock/index.js"
+    Notes: "./notes/index.js"
   },
   output: {
     filename: "[name]/index.js",

@@ -1,0 +1,42 @@
+name: Continuous deploy
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  serverless-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install serverless
+        run: npm install -g serverless
+      
+      - name: Install npm
+        run: npm install
+
+      - name: API DOCS Deploy
+        if: github.ref == 'refs/heads/master'
+        run: |
+          npm run apidoc
+          cd ApiDocs/
+          serverless  --verbose
+          cd ..
+          
+      - name: Build Project
+        run: npm run bundle
+
+      - name: Deploy dev
+        if: github.ref == 'refs/heads/master'
+        run: serverless deploy --region ap-south-1 --verbose
+

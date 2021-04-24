@@ -8,6 +8,11 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
+  environment: 
+    NOTEBOOKS_TABLE: "UserNotebooks"
+    PASTEBIN_TABLE: "UserPasteBins"
+    SWOTBOARD_TABLE: "UserSwotBoards"
+    NOTES_TABLE: "UserNotes"
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -19,45 +24,27 @@ provider:
       Resource: ["arn:aws:dynamodb:ap-south-1:318066470757:table/UserSwotBoards","arn:aws:dynamodb:ap-south-1:318066470757:table/UserPasteBins", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotes", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotebooks"]
 
 functions:
-  imageDock:
-    handler: ImageDock/index.handler
+  notes:
+    handler: Notes/index.handler
     package:
       individually: true
-      artifact: "./dist/ImageDock.zip"
-    name: imageDock
+      artifact: "./dist/Notes.zip"
     cors: true
     events:
       - http:
-          path: collection
+          path: notebook
           method: post
           cors: true
       - http:
-          path: collection/{collectionId}
+          path: notebook
           method: get
           cors: true
       - http:
-          path: collection
-          method: get
-          cors: true
+            path: notebook/{notebookId}
+            method: put
+            cors: true
       - http:
-          path: collection/image
-          method: post
-          cors: true
-      - http:
-          path: recent-uploads
-          method: get
-          cors: true
-      - http:
-          path: image-store
-          method: post
-          cors: true
-      - http:
-          path: /collection/{collectionId}
+          path: notebook/{notebookId}
           method: delete
           cors: true
-      - http:
-          path: /collection/{collectionId}
-          method: put
-          cors: true
-    environment: 
-      USER_IMAGES_TABLENAME: 'UserImages'
+      
