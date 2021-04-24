@@ -1,0 +1,19 @@
+{
+  "name": "notes-yard-be",
+  "version": "1.0.0",
+  "description": "Notes Yard Backend ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smilegupta/notes-yard-backend.git"
+  },
+  "author": "Smile Gupta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smilegupta/notes-yard-backend/issues"
+  },
+  "homepage": "https://github.com/smilegupta/notes-yard-backend#readme"
+}

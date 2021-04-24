@@ -1,0 +1,63 @@
+service: notes-yard-backend
+
+useDotenv: true
+
+plugins: 
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: ["arn:aws:dynamodb:ap-south-1:318066470757:table/UserSwotBoards","arn:aws:dynamodb:ap-south-1:318066470757:table/UserPasteBins", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotes", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotebooks"]
+
+functions:
+  imageDock:
+    handler: ImageDock/index.handler
+    package:
+      individually: true
+      artifact: "./dist/ImageDock.zip"
+    name: imageDock
+    cors: true
+    events:
+      - http:
+          path: collection
+          method: post
+          cors: true
+      - http:
+          path: collection/{collectionId}
+          method: get
+          cors: true
+      - http:
+          path: collection
+          method: get
+          cors: true
+      - http:
+          path: collection/image
+          method: post
+          cors: true
+      - http:
+          path: recent-uploads
+          method: get
+          cors: true
+      - http:
+          path: image-store
+          method: post
+          cors: true
+      - http:
+          path: /collection/{collectionId}
+          method: delete
+          cors: true
+      - http:
+          path: /collection/{collectionId}
+          method: put
+          cors: true
+    environment: 
+      USER_IMAGES_TABLENAME: 'UserImages'

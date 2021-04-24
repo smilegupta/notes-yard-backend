@@ -1,0 +1,12 @@
+name: image-dock-documentation
+stage: dev
+
+image-doc-apidoc:
+  component: "@serverless/website"
+  inputs:
+    code:
+      root: ./ 
+      src: ./html-docs
+    region: ap-south-1
+    bucketName: image-doc-documentaion
+    domain: image-dock-api.smilegupta.tech
