@@ -25,10 +25,10 @@ provider:
 
 functions:
   notebook:
-    handler: Notes/index.handler
+    handler: Notebook/index.handler
     package:
       individually: true
-      artifact: "./dist/Notes.zip"
+      artifact: "./dist/Notebook.zip"
     cors: true
     events:
       - http:
@@ -47,10 +47,20 @@ functions:
           path: notebook/{notebookId}
           method: delete
           cors: true
-  pastebin:
-    handler: Pastebin/index.handler
+  pasteBin:
+    handler: PasteBin/index.handler
     package:
       individually: true
-      artifact: "./dist/Notes.zip"
+      artifact: "./dist/PasteBin.zip"
+    cors: true
+    events:
+      - http:
+          path: pasteBin
+          method: post
+          cors: true
+      - http:
+          path: pasteBin/{pasteBinId}
+          method: get
+          cors: true
     
       

@@ -1,7 +1,9 @@
 const uuid = require("uuid");
 const { putItem, queryItems, deleteItem, updateItem } = require("../Utils/db-helpers");
 const { getInputParams } = require("../Utils/inputHelper");
-const NOTEBOOKS_TABLE = process.env.NOTEBOOKS_TABLE
+
+const NOTEBOOKS_TABLE = process.env.NOTEBOOKS_TABLE;
+
 // List of headers to be passed in the response
 const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -17,7 +19,7 @@ const headers = {
  * @apiParam {String} notebookName   name of the Notebook
 
  * @apiContentType application/json
- * @apiSampleRequest https://xlpyxuiddk.execute-api.ap-south-1.amazonaws.com/dev/Notebook
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook
  */
 async function createNotebook(input) {
     const notebookId = uuid.v4();
@@ -46,7 +48,7 @@ async function createNotebook(input) {
  * @apiParam {String} notebookId     id of the notebook for which the data is requested for
  * @apiParam {String} userId           userId of the person logged-in
  * @apiContentType application/json
- * @apiSampleRequest https://xlpyxuiddk.execute-api.ap-south-1.amazonaws.com/dev/notebook
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook
  */
 async function getNotebooksForUser(userId) {
     const res = await queryItems({
@@ -70,7 +72,7 @@ async function getNotebooksForUser(userId) {
  * @apiParam {String} userId           userId of the person logged-in
  *
  * @apiContentType application/json
- * @apiSampleRequest https://xlpyxuiddk.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}
  */
 
 async function deleteNotebook(notebookId, userId) {
@@ -99,7 +101,7 @@ async function deleteNotebook(notebookId, userId) {
 
  *
  * @apiContentType application/json
- * @apiSampleRequest https://xlpyxuiddk.execute-api.ap-south-1.amazonaws.com/dev/collection/{collectionId}
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}
  */
 
 async function updateNotebook(notebookId, body) {
@@ -124,7 +126,6 @@ async function updateNotebook(notebookId, body) {
   }
 
 exports.handler = async (event) => {
-    console.log("Input to the lambda function", event);
     const {
       resource,
       body,

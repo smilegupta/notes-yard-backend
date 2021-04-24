@@ -3,7 +3,9 @@ const path = require("path");
 
 const config = {
   entry: {
-    Notes: "./notes/index.js"
+    Notebook: "./notebook/index.js",
+    PasteBin: "./pasteBin/index.js"
+
   },
   output: {
     filename: "[name]/index.js",
