@@ -4,7 +4,8 @@
   "description": "Notes Yard Backend ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "./node_modules/.bin/webpack",
+    "apidoc": "apidoc -i ./ -e node_modules -e ApiDocs -o ApiDocs/html-docs/"
   },
   "devDependencies": {
     "apidoc": "0.18.0",
