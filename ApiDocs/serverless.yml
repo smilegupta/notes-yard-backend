@@ -1,4 +1,4 @@
-name: image-dock-documentation
+name: notesyard-documentation
 stage: dev
 
 image-doc-apidoc:
@@ -8,5 +8,5 @@ image-doc-apidoc:
       root: ./ 
       src: ./html-docs
     region: ap-south-1
-    bucketName: image-doc-documentaion
-    domain: image-dock-api.smilegupta.tech
+    bucketName: notes-yard-documentaion
+    domain: notesyard-api.smilegupta.tech

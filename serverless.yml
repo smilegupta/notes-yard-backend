@@ -24,7 +24,7 @@ provider:
       Resource: ["arn:aws:dynamodb:ap-south-1:318066470757:table/UserSwotBoards","arn:aws:dynamodb:ap-south-1:318066470757:table/UserPasteBins", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotes", "arn:aws:dynamodb:ap-south-1:318066470757:table/UserNotebooks"]
 
 functions:
-  notes:
+  notebook:
     handler: Notes/index.handler
     package:
       individually: true
@@ -47,4 +47,10 @@ functions:
           path: notebook/{notebookId}
           method: delete
           cors: true
+  pastebin:
+    handler: Pastebin/index.handler
+    package:
+      individually: true
+      artifact: "./dist/Notes.zip"
+    
       
