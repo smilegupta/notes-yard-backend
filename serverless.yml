@@ -62,5 +62,28 @@ functions:
           path: pasteBin/{pasteBinId}
           method: get
           cors: true
+  notes:
+    handler: Notes/index.handler
+    package:
+      individually: true
+      artifact: "./dist/Notes.zip"
+    cors: true
+    events:
+      - http:
+          path: notebook/{notebookId}/note
+          method: post
+          cors: true
+      - http:
+          path: notebook/{notebookId}/note
+          method: get
+          cors: true
+      - http:
+            path: notebook/{notebookId}/note/{noteId}
+            method: put
+            cors: true
+      - http:
+          path: notebook/{notebookId}/note/{noteId}
+          method: delete
+          cors: true
     
       

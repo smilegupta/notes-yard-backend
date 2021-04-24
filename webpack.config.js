@@ -4,7 +4,8 @@ const path = require("path");
 const config = {
   entry: {
     Notebook: "./notebook/index.js",
-    PasteBin: "./pasteBin/index.js"
+    PasteBin: "./pasteBin/index.js",
+    Notes: './notes/index.js'
 
   },
   output: {
