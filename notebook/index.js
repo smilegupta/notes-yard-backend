@@ -57,7 +57,7 @@ async function getNotebooksForUser(userId) {
       ExpressionAttributeValues: { ":userId": userId }
     });
     const notebooks = res.Items;
-    const sortedNotebooks = res.Items.length ? response.sort(
+    const sortedNotebooks = res.Items.length ? res.sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     ) : [];
     return {
