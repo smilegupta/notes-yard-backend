@@ -56,10 +56,14 @@ async function getNotebooksForUser(userId) {
       KeyConditionExpression: `userId=:userId`,
       ExpressionAttributeValues: { ":userId": userId }
     });
+    const notebooks = res.Items;
+    const sortedNotebooks = res.Items.length ? response.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    ) : [];
     return {
       headers,
       statusCode: 200,
-      body: JSON.stringify(res.Items)
+      body: JSON.stringify(sortedNotebooks)
     };
   }
 
