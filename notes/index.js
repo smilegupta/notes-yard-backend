@@ -61,6 +61,17 @@ async function createNote(notebookId, body) {
   };
 }
 
+
+/**
+ * @apiName List notes
+ * @apiGroup Notes
+ * @api {get} /notebook/{notebookId}/note    List notes for a specific notebook
+
+ * @apiParam {String} notebookId notebookId of the notebook
+
+ * @apiContentType application/json
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}/note
+ */
 async function listNotes(notebookId) {
   console.log(`getting the list of notes for a notebook ${notebookId}`);
   const res = await queryItems({
@@ -84,6 +95,19 @@ async function listNotes(notebookId) {
   };
 }
 
+
+/**
+ * @apiName Delete note
+ * @apiGroup Notes
+ * @api {post} /notebook/{notebookId}/note    Delete note inside a note book
+
+ * @apiParam {String} userId   userId of the person from whom the Notebook is getting created
+ * @apiParam {String} notebookId notebookId of the notebook
+ * @apiParam {String} noteId    Id of the note to be deleted
+
+ * @apiContentType application/json
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}/note
+ */
 async function deleteNote(notebookId, noteId, userId) {
     await deleteItem({
       TableName: NOTES_TABLE,
@@ -111,7 +135,20 @@ async function deleteNote(notebookId, noteId, userId) {
     };
   }
 
-  async function updateNote(notebookId,noteId, body) {
+
+/**
+ * @apiName Update note
+ * @apiGroup Notes
+ * @api {post} /notebook/{notebookId}/note    Update note
+
+ * @apiParam {String} notebookId    notebookId of the notebook
+ * @apiParam {String} noteTitle     name of the noteTitle
+ * @apiParam {String} note  content of the note
+
+ * @apiContentType application/json
+ * @apiSampleRequest https://nwebxyxksb.execute-api.ap-south-1.amazonaws.com/dev/notebook/{notebookId}/note
+ */
+async function updateNote(notebookId, noteId, body) {
       console.log("notebookId", )
     await updateItem({
       TableName: NOTES_TABLE,
@@ -150,7 +187,7 @@ exports.handler = async (event) => {
     return createNote(notebookId, body);
   }
 
-  // Get list of notes a note book have
+  // Get list of notes for a notebook
   if (httpMethod === "GET" && resource === "/notebook/{notebookId}/note") {
     const { notebookId } = pathParams;
     return listNotes(notebookId);
