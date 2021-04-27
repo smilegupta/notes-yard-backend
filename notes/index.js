@@ -62,15 +62,25 @@ async function createNote(notebookId, body) {
 }
 
 async function listNotes(notebookId) {
+  console.log(`getting the list of notes for a notebook ${notebookId}`);
   const res = await queryItems({
     TableName: NOTES_TABLE,
     KeyConditionExpression: `notebookId=:notebookId`,
     ExpressionAttributeValues: { ":notebookId": notebookId },
   });
+  const notes = res.Items;
+  const sortedNotes = notes.length ? notes.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  ) : [];
+  console.log("response being sent", {
+    headers,
+    statusCode: 200,
+    body: JSON.stringify(sortedNotes)
+  };);
   return {
     headers,
     statusCode: 200,
-    body: JSON.stringify(res.Items),
+    body: JSON.stringify(sortedNotes)
   };
 }
 
