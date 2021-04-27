@@ -76,7 +76,7 @@ async function listNotes(notebookId) {
     headers,
     statusCode: 200,
     body: JSON.stringify(sortedNotes)
-  };);
+  });
   return {
     headers,
     statusCode: 200,
