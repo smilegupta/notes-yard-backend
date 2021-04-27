@@ -145,26 +145,26 @@ exports.handler = async (event) => {
   } = getInputParams(event);
 
   // creating a new Note
-  if (httpMethod === "POST" && resource === "notebook/{notebookId}/note") {
+  if (httpMethod === "POST" && resource === "/notebook/{notebookId}/note") {
     const { notebookId } = pathParams;
     return createNote(notebookId, body);
   }
 
   // Get list of notes a note book have
-  if (httpMethod === "GET" && resource === "notebook/{notebookId}/note") {
+  if (httpMethod === "GET" && resource === "/notebook/{notebookId}/note") {
     const { notebookId } = pathParams;
     return listNotes(notebookId);
   }
 
   // Deleting a note
-  if (httpMethod === "DELETE" && resource === "notebook/{notebookId}/note/{noteId}") {
+  if (httpMethod === "DELETE" && resource === "/notebook/{notebookId}/note/{noteId}") {
     const { notebookId , noteId} = pathParams;
     const { userId } = queryParams;
     return deleteNote(notebookId, noteId, userId);
   }
 
   // Updating a note
-  if (httpMethod === "PUT" && resource === "notebook/{notebookId}/note/{noteId}") {
+  if (httpMethod === "PUT" && resource === "/notebook/{notebookId}/note/{noteId}") {
     const { notebookId, noteId } = pathParams;
     return updateNote(notebookId,noteId, body);
   }
