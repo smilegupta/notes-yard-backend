@@ -3,7 +3,7 @@
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/smilegupta) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/smilegupta)
 
 Notes Yard is a highly scalable, low cost and high performant one stop solution to:
-- Upload images and get sharable link and getting iframes to add in your website
+- Uploading images, gettting sharable link and getting iframes to add to your website
 - A Markdown Editor
 - Creating private notebooks and notes
 
@@ -24,7 +24,7 @@ API Docs -> [https://notesyard-api.smilegupta.tech](https://notesyard-api.smileg
 
 # Tech Stack
 
-<b>Frontned</b>: Reactjs
+<b>Frontend</b>: Reactjs
 <br>
 <b>Additional NPM Libraries</b>
   - react-toastify
@@ -62,9 +62,9 @@ API Docs -> [https://notesyard-api.smilegupta.tech](https://notesyard-api.smileg
   Architectural  Diargram 
 </p>
 
-# Overall Functionlity
+# Overall Functionality
 - Uploading a paste (publically) and getting a sharable link. 
-- A MD Previewer
+- An MD Previewer
 - Ability to make private notebooks and adding notes. 
 - User Management (Login, register, sending confirmation link, forgot password and email verification before entering the system) 
 - Authenticated Routes and 404 error page.
